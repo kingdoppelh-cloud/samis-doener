@@ -1,43 +1,109 @@
 <!doctype html>
 <html lang="de" class="scroll-smooth">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <!-- Favicon (Logo von Sami) -->
     <link rel="icon" type="image/png" href="/logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
+
     <!-- Titel & Beschreibung für SAMI -->
     <title>Sami's Döner Imbiss - Bad Sooden-Allendorf</title>
     <meta name="description" content="Frische Döner, Pizza und Snacks am Rewe Parkplatz in Bad Sooden-Allendorf. Jetzt Speisekarte ansehen und direkt bestellen!" />
-    
+
     <!-- Social Media / WhatsApp Vorschau -->
     <meta property="og:title" content="Sami's Döner Imbiss 🥙" />
     <meta property="og:description" content="Hunger auf Döner? Bestelle jetzt ganz einfach per WhatsApp bei Sami!" />
-    <meta property="og:image" content="/SamisImbiss.webp" /> 
+    <meta property="og:image" content="/SamisImbiss.webp" />
     <meta property="og:type" content="website" />
-    
+
     <meta name="theme-color" content="#050816" />
 
     <!-- Tailwind Config (Farben für Sami) -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              'orange-500': '#f97316',
-              'orange-600': '#ea580c',
-              'pizza-cream': '#000000', 
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'orange-500': '#f97316',
+                        'orange-600': '#ea580c',
+                        'pizza-cream': '#000000',
+                    }
+                }
             }
-          }
         }
+    </script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <!-- HIER IST DER FIX: Pfad direkt auf /index.tsx (ohne /src davor) -->
+    <script type="module" src="/index.tsx"></script>
+
+    <!-- Chatbot Widget -->
+    <style>
+      #chatbot-widget {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 400px;
+        height: 600px;
+        border: none;
+        border-radius: 16px;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        z-index: 9999;
+        display: none;
+      }
+      
+      #chatbot-widget.open {
+        display: block;
+      }
+      
+      #chatbot-toggle {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(255,107,53,0.4);
+        z-index: 10000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.2s;
+      }
+      
+      #chatbot-toggle:hover {
+        transform: scale(1.1);
+      }
+      
+      #chatbot-toggle svg {
+        width: 30px;
+        height: 30px;
+        fill: white;
+      }
+    </style>
+
+    <button id="chatbot-toggle" onclick="toggleChatbot()">
+      <svg viewBox="0 0 24 24">
+        <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/>
+      </svg>
+    </button>
+
+    <iframe id="chatbot-widget" src="https://samis-chatbott-4c5vtjwri-hendriks-projects-c8fdc6db.vercel.app/"></iframe>
+
+    <script>
+      function toggleChatbot() {
+        const widget = document.getElementById('chatbot-widget');
+        const toggle = document.getElementById('chatbot-toggle');
+        widget.classList.toggle('open');
+        toggle.style.display = widget.classList.contains('open') ? 'none' : 'flex';
       }
     </script>
-  </head>
-  <body>
-    <div id="root"></div>
-    
-    <!-- HIER IST DER FIX: Pfad direkt auf /index.tsx (ohne /src davor) -->
-    <script type="module" src="/index.tsx"></script> 
-  </body>
+
+</body>
 </html>
