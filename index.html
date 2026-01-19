@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="de" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Favicon (Logo von Sami) -->
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Titel & Beschreibung für SAMI -->
+    <title>Sami's Döner Imbiss - Bad Sooden-Allendorf</title>
+    <meta name="description" content="Frische Döner, Pizza und Snacks am Rewe Parkplatz in Bad Sooden-Allendorf. Jetzt Speisekarte ansehen und direkt bestellen!" />
+    
+    <!-- Social Media / WhatsApp Vorschau -->
+    <meta property="og:title" content="Sami's Döner Imbiss 🥙" />
+    <meta property="og:description" content="Hunger auf Döner? Bestelle jetzt ganz einfach per WhatsApp bei Sami!" />
+    <meta property="og:image" content="/SamisImbiss.webp" /> 
+    <meta property="og:type" content="website" />
+    
+    <meta name="theme-color" content="#050816" />
+
+    <!-- Tailwind Config (Farben für Sami) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'orange-500': '#f97316',
+              'orange-600': '#ea580c',
+              'pizza-cream': '#000000', 
+            }
+          }
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    
+    <!-- HIER IST DER FIX: Pfad direkt auf /index.tsx (ohne /src davor) -->
+    <script type="module" src="/index.tsx"></script> 
+  </body>
+</html>
